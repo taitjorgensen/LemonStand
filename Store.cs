@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace LemonStand
 {
-    class Program
+    class Store
     {
-        static void Main(string[] args)
-        {
-            Game game = new Game();
-            game.StartGame();
-            
-        }
+        //member variables
+
+
+        //constructor
+
+
+        // member methods
     }
 }
