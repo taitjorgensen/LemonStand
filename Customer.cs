@@ -8,5 +8,20 @@ namespace LemonStand
 {
     class Customer
     {
+        //member variables
+        //customer types - child classes??
+        protected string factors;
+        
+
+        //constructor
+
+
+        //member methods
+        //likeliness to purchase
+        protected void LikelyToPurchase(string[] factors)
+        {
+            string[,] purchaseFactors = { { "low", "med", "high" }, { "sweet", "sour", "balanced" }, { "sunny", "rainy", "cool" } };
+
+        }
     }
 }

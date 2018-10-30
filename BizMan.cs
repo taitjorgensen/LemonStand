@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonStand
 {
-    class Weather
+    class BizMan : Customer
     {
         //member variable
 
@@ -15,6 +15,8 @@ namespace LemonStand
 
 
         //member method
-
+        //likeliness to purchase
+        //less likely when price is too low
+        //more likely to support at higher price
     }
 }

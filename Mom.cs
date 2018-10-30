@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace LemonStand
 {
-    class Weather
+    class Mom : Customer
     {
-        //member variable
+        //member variables
 
 
         //constructor
 
 
         //member method
-
+        //likeliness to purchase
+        //less likely to purchase if too much sugar
+        //most likely when recipe balanced
     }
 }
