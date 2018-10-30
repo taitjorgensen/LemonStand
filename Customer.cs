@@ -10,8 +10,11 @@ namespace LemonStand
     {
         //member variables
         //customer types - child classes??
+        Store store;
+        Weather weather;
         protected string factors;
-        
+        protected double purchaseFactor = 1;
+        protected double likelyToPurchase;
 
         //constructor
 

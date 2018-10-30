@@ -10,14 +10,15 @@ namespace LemonStand
     {
         //member variables
         Inventory inventory;
-        private int lemonsPerPitcher = 0;
-        private int cupsOfSugarPerPitcher = 0;
+        public int lemonsPerPitcher = 0;
+        public int cupsOfSugarPerPitcher = 0;
         private int cubesOfIcePerPitcher = 0;
         private int cupsPerPitcher = 8;
         private int pitchersMade = 0;
         public int lemonsUsed;
         private int sugarUsed;
         private int iceUsed;
+        public double price;
 
         private List<string> recipe;
 
