@@ -56,7 +56,7 @@ namespace LemonStand
 
 
 
-        public void PurchaseInventory()
+        public void PurchaseInventory(Player player)
         {
             PurchaseCupsOfSugar();
             PurchaseCubesOfIce();
@@ -95,7 +95,7 @@ namespace LemonStand
             cubesOfIce = cubesOfIce + icePurchased;
             cups = cups + cupsPurchased;
             UpdateCurrentFunds();
-            ViewInventory();
+            UI.ViewInventory(player);
         }
 
         public int AdjustLemonInventory(int lemonsUsed)
@@ -114,14 +114,6 @@ namespace LemonStand
         {
             return cups = cups - cupsSold;
         }
-        public void ViewInventory()
-        {
-            Console.WriteLine("Current inventory is: ");
-            Console.WriteLine("Lemons: " + lemons);
-            Console.WriteLine("Cups of Sugar: " + cupsOfSugar);
-            Console.WriteLine("Ice cubes: " + cubesOfIce);
-            Console.WriteLine("Cups: " + cups);
-            Console.ReadLine();
-        }
+
     }
 }

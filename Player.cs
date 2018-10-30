@@ -12,10 +12,11 @@ namespace LemonStand
         Inventory inventory = new Inventory();
         public double price = 0;
 
-        public void SetUp()
+        public void SetUp(Game player)
         {
-            inventory.PurchaseInventory();
+            inventory.PurchaseInventory(player);
             recipe.SetRecipe();
         }
+        
     }
 }

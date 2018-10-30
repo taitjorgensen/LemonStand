@@ -9,7 +9,7 @@ namespace LemonStand
     class Store
     {
         //member variables
-        Inventory inventory;
+        
         public double priceOfLemon = .40;
         public double priceOfSugar = .10;
         public double priceOfIce = .01;
@@ -49,7 +49,7 @@ namespace LemonStand
         }
         public double TotalPurchases()
         {
-            DetermineCosts(inventory);
+            DetermineCosts(player.inventory);
             return purchases = (costOfCups + costOfIce + costOfLemons + costOfSugar);
         }
 
