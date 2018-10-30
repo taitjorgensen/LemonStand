@@ -11,9 +11,10 @@ namespace LemonStand
         // member variables
         
         private List<string> gameRules = new List<string> { "As the store owner, you begin with $20.", "Each day you will see the weather, purchase ingredients, set your recipe, and set the daily price.", "Ingredients include, Lemons, Sugar, and Ice.", "Cups are also required to serve, but cannot be changed.", "Weather and price will affect the amount of lemonade sold each day.", "Press ENTER when ready." };
-        Inventory inventory = new Inventory();
-        //Weather dailyWeather;
-        //Inventory inventory;
+        Day day = new Day();
+        Store store = new Store();
+        Player player = new Player();
+
 
 
         // constructor
@@ -34,7 +35,8 @@ namespace LemonStand
         {
 
             //Weather.GetWeather();
-            inventory.PurchaseInventory();
+            player.SetUp();
+            day.NewDay();
             //Store SetRecipe();
             //Store SetPrice();
 

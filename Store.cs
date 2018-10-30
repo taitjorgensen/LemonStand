@@ -10,45 +10,48 @@ namespace LemonStand
     {
         //member variables
         Inventory inventory;
-        public int lemonsPerPitcher = 0;
-        public int cupsOfSugarPerPitcher = 0;
-        private int cubesOfIcePerPitcher = 0;
-        private int cupsPerPitcher = 8;
-        private int pitchersMade = 0;
-        public int lemonsUsed;
-        private int sugarUsed;
-        private int iceUsed;
-        public double price;
-
-        private List<string> recipe;
-
+        public double priceOfLemon = .40;
+        public double priceOfSugar = .10;
+        public double priceOfIce = .01;
+        public double priceOfCups = .05;
+        private double costOfCups;
+        private double costOfLemons;
+        private double costOfIce;
+        private double costOfSugar;
+        public double purchases;
 
         //constructor
 
 
         // member methods
-        private void SetRecipe()
+        private void DetermineCosts(Inventory inventory)
         {
-            Console.WriteLine("Your recipe creates a pitcher that will yeild 8 cups of lemonade.");
-            Console.WriteLine("How many lemons will you use per pitcher?");
-            lemonsPerPitcher = int.Parse(Console.ReadLine());
-            
-            Console.WriteLine("How many Cups of Sugar will you use per pitcher?");
-            cupsOfSugarPerPitcher = int.Parse(Console.ReadLine());
-            
-            Console.WriteLine("How many Cubes of Ice will you use per pitcher?");
-            cubesOfIcePerPitcher = int.Parse(Console.ReadLine());
-            
-            Console.WriteLine("How many Pitchers will you make?");
-            pitchersMade = int.Parse(Console.ReadLine());
-            lemonsUsed = lemonsPerPitcher * pitchersMade;
-            sugarUsed = cupsOfSugarPerPitcher * pitchersMade;
-            iceUsed = cubesOfIcePerPitcher * pitchersMade;
-            inventory.AdjustLemonInventory(lemonsUsed);
-            inventory.AdjustSugarInventory(sugarUsed);
-            inventory.AdjustIceInventory(iceUsed);
-            inventory.ViewInventory();
-
+            DetermineCostOfCups();
+            DetermineCostOfIce();
+            DetermineCostOfLemons();
+            DetermineCostOfSugar();
+            double DetermineCostOfCups()
+            {
+                return costOfCups = (inventory.cupsPurchased * priceOfCups);
+            }
+            double DetermineCostOfIce()
+            {
+                return costOfIce = (inventory.icePurchased * priceOfIce);
+            }
+            double DetermineCostOfLemons()
+            {
+                return costOfLemons = (inventory.lemonsPurchased * priceOfLemon);
+            }
+            double DetermineCostOfSugar()
+            {
+                return costOfSugar = (inventory.sugarPurchased * priceOfSugar);
+            }
         }
+        public double TotalPurchases()
+        {
+            DetermineCosts(inventory);
+            return purchases = (costOfCups + costOfIce + costOfLemons + costOfSugar);
+        }
+
     }
 }

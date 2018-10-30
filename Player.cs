@@ -8,5 +8,14 @@ namespace LemonStand
 {
     class Player
     {
+        Recipe recipe = new Recipe();
+        Inventory inventory = new Inventory();
+        public double price = 0;
+
+        public void SetUp()
+        {
+            inventory.PurchaseInventory();
+            recipe.SetRecipe();
+        }
     }
 }

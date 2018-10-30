@@ -10,20 +10,16 @@ namespace LemonStand
     {
         //member variables
         Store store;
+        Player player;
         private int cupsOfSugar = 0;
         private int cubesOfIce = 0;
         private int lemons = 0;
         private int cups = 0;
-        private int sugarPurchased = 0;
-        private int icePurchased = 0;
-        private int lemonsPurchased = 0;
-        private int cupsPurchased = 0;
-        private double costOfSugar;
-        private double costOfIce;
-        private double costOfLemons;
-        private double costOfCups;
+        public int sugarPurchased = 0;
+        public int icePurchased = 0;
+        public int lemonsPurchased = 0;
+        public int cupsPurchased = 0;
         private double currentFunds = 20.00;
-        private double purchases;
         private double income;
         public int CupsOfSugar
         {
@@ -52,39 +48,12 @@ namespace LemonStand
         //member methods
         private double UpdateCurrentFunds()
         {
-            TotalPurchases();
-            currentFunds = (currentFunds - purchases + income);
+            store.TotalPurchases();
+            currentFunds = (currentFunds - store.purchases + income);
             Console.WriteLine("You now have $" + currentFunds + ".");
             return currentFunds;
         }
-        private void DetermineCosts()
-        {
-            DetermineCostOfCups();
-            DetermineCostOfIce();
-            DetermineCostOfLemons();
-            DetermineCostOfSugar();
-            double DetermineCostOfCups()
-            {
-                return costOfCups = (cupsPurchased * .05);
-            }
-            double DetermineCostOfIce()
-            {
-                return costOfIce = (icePurchased * .01);
-            }
-            double DetermineCostOfLemons()
-            {
-                return costOfLemons = (lemonsPurchased * .40);
-            }
-            double DetermineCostOfSugar()
-            {
-                return costOfSugar = (sugarPurchased * .10);
-            }
-        }
-        private double TotalPurchases()
-        {
-            DetermineCosts();
-            return purchases = (costOfCups + costOfIce + costOfLemons + costOfSugar);
-        }
+
 
 
         public void PurchaseInventory()

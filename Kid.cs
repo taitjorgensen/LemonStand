@@ -9,8 +9,9 @@ namespace LemonStand
     class Kid : Customer 
     {
         //member variable
-        Store store;
+        
         Weather weather;
+        Player player;
 
         //constructor
 
@@ -21,11 +22,11 @@ namespace LemonStand
         //most likely when sunny and lower price
         private void DetermineLikelyToPurchase()
         {
-            if (store.price > 1.00 || weather.weatherForecast == weather.rainyDay)
+            if (player.price > 1.00 || weather.weatherForecast == weather.rainyDay)
             {
                 likelyToPurchase = (purchaseFactor * .4);
             }
-            else if (store.price > .74 || weather.weatherForecast == weather.coolDay)
+            else if (player.price > .74 || weather.weatherForecast == weather.coolDay)
             {
                 likelyToPurchase = (purchaseFactor * .7);
             }

@@ -9,7 +9,7 @@ namespace LemonStand
     class Mom : Customer
     {
         //member variables
-        Store store;
+        Recipe recipe;
 
         //constructor
 
@@ -20,11 +20,11 @@ namespace LemonStand
         //most likely when recipe balanced
         private void DetermineLikelyToPurchase()
         {
-            if (store.cupsOfSugarPerPitcher > store.lemonsPerPitcher)
+            if ((recipe.cupsOfSugarPerPitcher - 1) > recipe.lemonsPerPitcher)
             {
                 likelyToPurchase = (purchaseFactor * .4);
             }
-            else if (store.lemonsPerPitcher == store.cupsOfSugarPerPitcher)
+            else if (recipe.lemonsPerPitcher == (recipe.cupsOfSugarPerPitcher - 1))
             {
                 likelyToPurchase = (purchaseFactor * .7);
             }

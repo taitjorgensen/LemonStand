@@ -10,6 +10,7 @@ namespace LemonStand
     {
         //member variable
         Store store;
+        Player player;
 
         //constructor
 
@@ -20,11 +21,11 @@ namespace LemonStand
         //more likely to support at higher price
         private void DetermineLikelyToPurchase()
         {
-            if (store.price > 1.00)
+            if (player.price > 1.00)
             {
                 likelyToPurchase = (purchaseFactor * .9);
             }
-            else if (store.price > .74)
+            else if (player.price > .74)
             {
                 likelyToPurchase = (purchaseFactor * .7);
             }
