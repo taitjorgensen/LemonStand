@@ -8,7 +8,7 @@ namespace LemonStand
 {
     class Day
     {
-        Weather weather = new Weather();
+        public Weather weather = new Weather();
         Random random = new Random();
         private List<Customer> customersPerDay = new List<Customer> { };
         public int day = 0;
@@ -34,10 +34,12 @@ namespace LemonStand
                 numberOfCustomers = 20;
                 CreateRainyDay();
             }
+            SellLemonade();
             return day++;
+            
         }
 
-        private void CreateSunnyDay()
+        public void CreateSunnyDay()
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
@@ -69,7 +71,7 @@ namespace LemonStand
                 customersPerDay.Add(newCustomer);
             }
         }
-        private void CreateCoolDay()
+        public void CreateCoolDay()
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
@@ -101,7 +103,7 @@ namespace LemonStand
                 customersPerDay.Add(newCustomer);
             }
         }
-        private void CreateRainyDay()
+        public void CreateRainyDay()
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
@@ -132,6 +134,10 @@ namespace LemonStand
                 }
                 customersPerDay.Add(newCustomer);
             }
+        }
+        private void SellLemonade()
+        {
+
         }
     }
 }

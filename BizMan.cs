@@ -20,13 +20,13 @@ namespace LemonStand
         //more likely to support at higher price
 
 
-        private void DetermineLikelyToPurchase(Player player, Day day)
+        private void DetermineLikelyToPurchase(Player player, Day day, Pitcher pitcher)
         {
-            if (pitcher.price > 1.00)
+            if (player.price > 1.00)
             {
                 likelyToPurchase = (purchaseFactor * .9);
             }
-            else if (pitcher.price > .74)
+            else if (player.price > .74)
             {
                 likelyToPurchase = (purchaseFactor * .7);
             }

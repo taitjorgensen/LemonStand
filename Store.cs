@@ -24,33 +24,33 @@ namespace LemonStand
 
 
         // member methods
-        private void DetermineCosts(Inventory inventory)
+        private void DetermineCosts(Player player)
         {
-            DetermineCostOfCups(inventory);
-            DetermineCostOfIce(inventory);
-            DetermineCostOfLemons(inventory);
-            DetermineCostOfSugar(inventory);
+            DetermineCostOfCups(player);
+            DetermineCostOfIce(player);
+            DetermineCostOfLemons(player);
+            DetermineCostOfSugar(player);
         }
         public double TotalPurchases(Player player)
         {
-            DetermineCosts(inventory);
+            DetermineCosts(player);
             return purchases = (costOfCups + costOfIce + costOfLemons + costOfSugar);
         }
-        double DetermineCostOfCups(Inventory inventory)
+        double DetermineCostOfCups(Player player)
         {
-            return costOfCups = (inventory.cupsPurchased * priceOfCups);
+            return costOfCups = (player.inventory.cupsPurchased * priceOfCups);
         }
-        double DetermineCostOfIce(Inventory inventory)
+        double DetermineCostOfIce(Player player)
         {
-            return costOfIce = (inventory.icePurchased * priceOfIce);
+            return costOfIce = (player.inventory.icePurchased * priceOfIce);
         }
-        double DetermineCostOfLemons(Inventory inventory)
+        double DetermineCostOfLemons(Player player)
         {
-            return costOfLemons = (inventory.lemonsPurchased * priceOfLemon);
+            return costOfLemons = (player.inventory.lemonsPurchased * priceOfLemon);
         }
-        double DetermineCostOfSugar(Inventory inventory)
+        double DetermineCostOfSugar(Player player)
         {
-            return costOfSugar = (inventory.sugarPurchased * priceOfSugar);
+            return costOfSugar = (player.inventory.sugarPurchased * priceOfSugar);
         }
     }
 }

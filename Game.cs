@@ -11,9 +11,9 @@ namespace LemonStand
         // member variables
 
         public List<string> gameRules = new List<string> {  };
-        Day day = new Day();
-        Store store = new Store();
-        Player player = new Player();
+        public Day day = new Day();
+        public Store store = new Store();
+        public Player player = new Player();
         private int playDays = 7;
 
 

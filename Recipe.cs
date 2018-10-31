@@ -13,7 +13,6 @@ namespace LemonStand
         public int lemonsPerPitcher = 0;
         public int cupsOfSugarPerPitcher = 0;
         public int cubesOfIcePerPitcher = 0;
-        private int cupsPerPitcher = 10;
         public string recipeBalance;
 
 
@@ -72,11 +71,11 @@ namespace LemonStand
 
         public string CheckSweetness()
         {
-            if (lemonsUsed == (sugarUsed - 1))
+            if (lemonsPerPitcher == (cupsOfSugarPerPitcher - 1))
             {
                 return recipeBalance = "balanced";
             }
-            else if (lemonsUsed <= sugarUsed)
+            else if (lemonsPerPitcher <= cupsOfSugarPerPitcher)
             {
                 return recipeBalance = "sweet";
             }

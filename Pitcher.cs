@@ -12,16 +12,18 @@ namespace LemonStand
         private int lemonsUsed;
         private int sugarUsed;
         private int iceUsed;
+        private int cupsPerPitcher = 10;
         public void AdjustInventory(Player player, Inventory inventory, Recipe recipe)
         {
 
-            lemonsUsed = recipe.lemonsPerPitcher * player.pitchersMade;
-            sugarUsed = recipe.cupsOfSugarPerPitcher * player.pitchersMade;
-            iceUsed = recipe.cubesOfIcePerPitcher * player.pitchersMade;
+            lemonsUsed = recipe.lemonsPerPitcher;
+            sugarUsed = recipe.cupsOfSugarPerPitcher;
+            iceUsed = recipe.cubesOfIcePerPitcher;
             inventory.AdjustLemonInventory(lemonsUsed);
             inventory.AdjustSugarInventory(sugarUsed);
             inventory.AdjustIceInventory(iceUsed);
             inventory.ViewInventory();
+
         }
         public double SetPrice()
         {
