@@ -36,6 +36,7 @@ namespace LemonStand
             if (price > 2.00 || price < .30)
             {
                 Console.WriteLine("This is out of line with current market conditions. Please set a different price.");
+                SetPrice();
             }
             return price;
         }

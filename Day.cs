@@ -49,23 +49,23 @@ namespace LemonStand
                 {
                     case 1:                        
                         newCustomer = new Kid();
-                        //kid.GetPurchaseFactor(weather.weatherForecast, pitcher.price);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 2:
                         newCustomer = new Mom();
-                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 3:
                         newCustomer = new Grandma();
-                        //grandma.GetPurchaseFactor(weather.weatherForecast);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 4:
                         newCustomer = new BizMan();
-                        //bizMan.DetermineLikelyToPurchase(pitcher.price);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     default:
                         newCustomer = new Mom();
-                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                 }
                 customersPerDay.Add(newCustomer);
@@ -81,23 +81,23 @@ namespace LemonStand
                 {
                     case 1:
                         newCustomer = new Kid();
-                        //kid.GetPurchaseFactor(weather.weatherForecast, pitcher.price);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 2:
                         newCustomer = new Mom();
-                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 3:
                         newCustomer = new Grandma();
-                        //grandma.GetPurchaseFactor(weather.weatherForecast);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 4:
                         newCustomer = new BizMan();
-                        //bizMan.GetPurchaseFactor(pitcher.price);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     default:
                         newCustomer = new Mom();
-                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                 }
                 customersPerDay.Add(newCustomer);
@@ -113,23 +113,23 @@ namespace LemonStand
                 {
                     case 1:
                         newCustomer = new Kid();
-                        //kid.GetPurchaseFactor(weather.weatherForecast, pitcher.price);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 2:
                         newCustomer = new Mom();
-                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 3:
                         newCustomer = new Grandma();
-                        //grandma.GetPurchaseFactor(weather.weatherForecast);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     case 4:
                         newCustomer = new BizMan();
-                        //bizMan.GetPurchaseFactor(pitcher.price);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                     default:
                         newCustomer = new Mom();
-                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        newCustomer.DetermineLikelyToPurchase();
                         break;
                 }
                 customersPerDay.Add(newCustomer);

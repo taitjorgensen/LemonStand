@@ -9,9 +9,7 @@ namespace LemonStand
     class Kid : Customer 
     {
         //member variable
-        
-        Weather weather;
-        Player player;
+        private double purchaseFactor;
 
         //constructor
 
@@ -20,19 +18,32 @@ namespace LemonStand
         //likeliness to purchase
         //less likely to purchase when raining or too expensive
         //most likely when sunny and lower price
-        private void DetermineLikelyToPurchase()
+        private double DetermineLikelyToPurchase(Player player, Weather weather)
         {
             if (player.price > 1.00 || weather.weatherForecast == weather.rainyDay)
             {
-                likelyToPurchase = (purchaseFactor * .4);
+                purchaseFactor = .4;
             }
             else if (player.price > .74 || weather.weatherForecast == weather.coolDay)
             {
-                likelyToPurchase = (purchaseFactor * .7);
+                purchaseFactor = .7;
             }
             else
             {
-                likelyToPurchase = (purchaseFactor * .9);
+                purchaseFactor = .9;
+            }
+            return purchaseFactor;
+        }
+        public bool PurchasesLemonade()
+        {
+            Random random = new Random();
+            if (random.Next(1, 101) > (purchaseFactor * 100))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

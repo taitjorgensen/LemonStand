@@ -10,29 +10,41 @@ namespace LemonStand
     {
         //member variable
 
-        private double purchaseFactor = 1;
+        private double purchaseFactor;
         //constructor
 
 
         //member method
-        //likeliness to purchase
         //less likely when price is too low
         //more likely to support at higher price
 
-
-        private void DetermineLikelyToPurchase(Player player, Day day, Pitcher pitcher)
+        private double DetermineLikelyToPurchase(Player player, Day day)
         {
             if (player.price > 1.00)
             {
-                likelyToPurchase = (purchaseFactor * .9);
+                purchaseFactor = .9;
             }
             else if (player.price > .74)
             {
-                likelyToPurchase = (purchaseFactor * .7);
+                purchaseFactor = .7;
             }
             else
             {
-                likelyToPurchase = (purchaseFactor * .4);
+                purchaseFactor = .4;
+            }
+            PurchasesLemonade();
+            return purchaseFactor;
+        }
+        public bool PurchasesLemonade()
+        {
+            Random random = new Random();
+            if (random.Next(1, 101) > (purchaseFactor * 100))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
