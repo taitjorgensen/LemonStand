@@ -9,8 +9,7 @@ namespace LemonStand
     class Inventory
     {
         //member variables
-        Store store;
-        Player player;
+        
         private int cupsOfSugar = 0;
         private int cubesOfIce = 0;
         private int lemons = 0;
@@ -46,9 +45,9 @@ namespace LemonStand
 
 
         //member methods
-        private double UpdateCurrentFunds()
+        public double UpdateCurrentFunds(Player player, Store store, Day day)
         {
-            store.TotalPurchases();
+            store.TotalPurchases(player);
             currentFunds = (currentFunds - store.purchases + income);
             Console.WriteLine("You now have $" + currentFunds + ".");
             return currentFunds;
@@ -56,7 +55,7 @@ namespace LemonStand
 
 
 
-        public void PurchaseInventory(Player player)
+        public void PurchaseInventory(Player player, Store store, Day day)
         {
             PurchaseCupsOfSugar();
             PurchaseCubesOfIce();
@@ -94,8 +93,8 @@ namespace LemonStand
             cupsOfSugar = cupsOfSugar + sugarPurchased;
             cubesOfIce = cubesOfIce + icePurchased;
             cups = cups + cupsPurchased;
-            UpdateCurrentFunds();
-            UI.ViewInventory(player);
+            UpdateCurrentFunds(player, store, day);
+            ViewInventory();
         }
 
         public int AdjustLemonInventory(int lemonsUsed)
@@ -113,6 +112,16 @@ namespace LemonStand
         public int AdjustCupsInventory(int cupsSold)
         {
             return cups = cups - cupsSold;
+        }
+        public void ViewInventory()
+        {
+            Console.WriteLine("Current inventory is: ");
+            Console.WriteLine("Lemons: " + lemons);
+            Console.WriteLine("Cups of Sugar: " + cupsOfSugar);
+            Console.WriteLine("Ice cubes: " + cubesOfIce);
+            Console.WriteLine("Cups: " + cups);
+            Console.ReadLine();
+
         }
 
     }

@@ -47,7 +47,15 @@ namespace LemonStand
                     Console.ReadLine();
                     SetNumberOfDaysToPlay();
                 }
-                return playDays;
+                else if (playDays <= 30 && playDays >= 7)
+                {
+                    return playDays;
+                }
+                else
+                {
+                    SetNumberOfDaysToPlay();
+                }
+                return 0;
             }
             RunGame();
         }
@@ -56,7 +64,7 @@ namespace LemonStand
         {
             while (day.day < playDays)
             {
-                player.SetUp(player);
+                player.SetUp(player, store, day);
                 day.NewDay();
             }
 

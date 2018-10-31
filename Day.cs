@@ -10,8 +10,7 @@ namespace LemonStand
     {
         Weather weather = new Weather();
         Random random = new Random();
-        Customer newCustomer;
-        private List<Customer> customersPerDay;
+        private List<Customer> customersPerDay = new List<Customer> { };
         public int day = 0;
         private int numberOfCustomers;
         
@@ -27,15 +26,13 @@ namespace LemonStand
             }
             else if (weather.weatherForecast == weather.coolDay)
             {
-                Customer customer1 = new Kid();
-                Customer customer2 = new Mom();
-                Customer customer3 = new BizMan();
+                numberOfCustomers = 40;
+                CreateCoolDay();
             }
             else
             {
-                Customer customer1 = new Mom();
-                Customer customer2 = new Grandma();
-                Customer customer3 = new BizMan();
+                numberOfCustomers = 20;
+                CreateRainyDay();
             }
             return day++;
         }
@@ -43,21 +40,94 @@ namespace LemonStand
         private void CreateSunnyDay()
         {
             for (int i = 0; i < numberOfCustomers; i++)
-            {    
+            {
+                Customer newCustomer;
                 int createCustomer = random.Next(1,5);
                 switch (createCustomer)
                 {
-                    case 1:
-                        Customer newCustomer = new Kid();
+                    case 1:                        
+                        newCustomer = new Kid();
+                        //kid.GetPurchaseFactor(weather.weatherForecast, pitcher.price);
                         break;
                     case 2:
-                        Customer newCustomer = new Mom();
+                        newCustomer = new Mom();
+                        //mom.GetPurchaseFactor(recipe.recipeBalance);
                         break;
                     case 3:
-                        Customer newCustomer = new Grandma();
+                        newCustomer = new Grandma();
+                        //grandma.GetPurchaseFactor(weather.weatherForecast);
                         break;
                     case 4:
-                        Customer newCustomer = new BizMan();
+                        newCustomer = new BizMan();
+                        //bizMan.DetermineLikelyToPurchase(pitcher.price);
+                        break;
+                    default:
+                        newCustomer = new Mom();
+                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        break;
+                }
+                customersPerDay.Add(newCustomer);
+            }
+        }
+        private void CreateCoolDay()
+        {
+            for (int i = 0; i < numberOfCustomers; i++)
+            {
+                Customer newCustomer;
+                int createCustomer = random.Next(1, 5);
+                switch (createCustomer)
+                {
+                    case 1:
+                        newCustomer = new Kid();
+                        //kid.GetPurchaseFactor(weather.weatherForecast, pitcher.price);
+                        break;
+                    case 2:
+                        newCustomer = new Mom();
+                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        break;
+                    case 3:
+                        newCustomer = new Grandma();
+                        //grandma.GetPurchaseFactor(weather.weatherForecast);
+                        break;
+                    case 4:
+                        newCustomer = new BizMan();
+                        //bizMan.GetPurchaseFactor(pitcher.price);
+                        break;
+                    default:
+                        newCustomer = new Mom();
+                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        break;
+                }
+                customersPerDay.Add(newCustomer);
+            }
+        }
+        private void CreateRainyDay()
+        {
+            for (int i = 0; i < numberOfCustomers; i++)
+            {
+                Customer newCustomer;
+                int createCustomer = random.Next(1, 5);
+                switch (createCustomer)
+                {
+                    case 1:
+                        newCustomer = new Kid();
+                        //kid.GetPurchaseFactor(weather.weatherForecast, pitcher.price);
+                        break;
+                    case 2:
+                        newCustomer = new Mom();
+                        //mom.GetPurchaseFactor(recipe.recipeBalance);
+                        break;
+                    case 3:
+                        newCustomer = new Grandma();
+                        //grandma.GetPurchaseFactor(weather.weatherForecast);
+                        break;
+                    case 4:
+                        newCustomer = new BizMan();
+                        //bizMan.GetPurchaseFactor(pitcher.price);
+                        break;
+                    default:
+                        newCustomer = new Mom();
+                        //mom.GetPurchaseFactor(recipe.recipeBalance);
                         break;
                 }
                 customersPerDay.Add(newCustomer);

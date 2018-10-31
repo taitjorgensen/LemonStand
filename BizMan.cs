@@ -9,9 +9,8 @@ namespace LemonStand
     class BizMan : Customer
     {
         //member variable
-        Store store;
-        Player player;
 
+        private double purchaseFactor = 1;
         //constructor
 
 
@@ -19,13 +18,15 @@ namespace LemonStand
         //likeliness to purchase
         //less likely when price is too low
         //more likely to support at higher price
-        private void DetermineLikelyToPurchase()
+
+
+        private void DetermineLikelyToPurchase(Player player, Day day)
         {
-            if (player.price > 1.00)
+            if (pitcher.price > 1.00)
             {
                 likelyToPurchase = (purchaseFactor * .9);
             }
-            else if (player.price > .74)
+            else if (pitcher.price > .74)
             {
                 likelyToPurchase = (purchaseFactor * .7);
             }
@@ -34,5 +35,7 @@ namespace LemonStand
                 likelyToPurchase = (purchaseFactor * .4);
             }
         }
+
+
     }
 }
