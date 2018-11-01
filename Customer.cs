@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonStand
 {
-    class Customer
+    abstract class Customer
     {
         //member variables
         //customer types - child classes??
@@ -18,15 +18,12 @@ namespace LemonStand
 
         //member methods
         //likeliness to purchase
-        public void DetermineLikelyToPurchase()
-        {
+        public abstract bool DetermineLikelyToPurchase(Player player, Weather weather);
 
-        }
+        //protected void LikelyToPurchase(string[] factors)
+        //{
+        //    string[,] purchaseFactors = { { "low", "med", "high" }, { "sweet", "sour", "balanced" }, { "sunny", "rainy", "cool" } };
 
-        protected void LikelyToPurchase(string[] factors)
-        {
-            string[,] purchaseFactors = { { "low", "med", "high" }, { "sweet", "sour", "balanced" }, { "sunny", "rainy", "cool" } };
-
-        }
+        //}
     }
 }

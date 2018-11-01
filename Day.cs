@@ -13,65 +13,71 @@ namespace LemonStand
         private List<Customer> customersPerDay = new List<Customer> { };
         public int day = 0;
         private int numberOfCustomers;
-        
+        Customer newCustomer;
+
         //Customer customer = new List<Customer>();
 
-        public int NewDay()
+        public int NewDay(Player player)
         {
             weather.GetWeatherForecast();
             if (weather.weatherForecast == weather.beautifulDay)
             {
                 numberOfCustomers = 60;
-                CreateSunnyDay();
+                CreateSunnyDay(player);
             }
             else if (weather.weatherForecast == weather.coolDay)
             {
-                numberOfCustomers = 40;
-                CreateCoolDay();
+                numberOfCustomers = 50;
+                CreateCoolDay(player);
             }
             else
             {
-                numberOfCustomers = 20;
-                CreateRainyDay();
+                numberOfCustomers = 35;
+                CreateRainyDay(player);
             }
-            SellLemonade();
+            SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
             return day++;
             
         }
 
-        public void CreateSunnyDay()
+        private void SellLemonade(Player player, object v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateSunnyDay(Player player)
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
-                Customer newCustomer;
+                
                 int createCustomer = random.Next(1,5);
                 switch (createCustomer)
                 {
                     case 1:                        
                         newCustomer = new Kid();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 2:
                         newCustomer = new Mom();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 3:
                         newCustomer = new Grandma();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 4:
                         newCustomer = new BizMan();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     default:
                         newCustomer = new Mom();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                 }
                 customersPerDay.Add(newCustomer);
             }
         }
-        public void CreateCoolDay()
+        public void CreateCoolDay(Player player)
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
@@ -81,63 +87,65 @@ namespace LemonStand
                 {
                     case 1:
                         newCustomer = new Kid();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 2:
                         newCustomer = new Mom();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 3:
                         newCustomer = new Grandma();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 4:
                         newCustomer = new BizMan();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     default:
                         newCustomer = new Mom();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                 }
                 customersPerDay.Add(newCustomer);
             }
         }
-        public void CreateRainyDay()
+        public void CreateRainyDay(Player player)
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
-                Customer newCustomer;
                 int createCustomer = random.Next(1, 5);
                 switch (createCustomer)
                 {
                     case 1:
                         newCustomer = new Kid();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 2:
                         newCustomer = new Mom();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 3:
                         newCustomer = new Grandma();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     case 4:
                         newCustomer = new BizMan();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                     default:
                         newCustomer = new Mom();
-                        newCustomer.DetermineLikelyToPurchase();
+                        SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
                         break;
                 }
                 customersPerDay.Add(newCustomer);
             }
         }
-        private void SellLemonade()
+        private void SellLemonade(Player player, bool didPurchase)
         {
-
+            if (didPurchase)
+            {
+                player.pitchers[player.pitchers.Count - 1].CurrentAvailableLemonade();
+            }
         }
     }
 }

@@ -12,19 +12,14 @@ namespace LemonStand
         public Inventory inventory = new Inventory();
         public double price = 0;
         public int pitchersMade = 0;
+        public List<Pitcher> pitchers;
 
         public void SetUp(Player player, Store store, Day day)
         {
             inventory.PurchaseInventory(player, store, day);
             recipe.SetRecipe(player, store, day);
             day.weather.GetWeatherForecast();
-            Console.WriteLine("How many Pitchers will you make?");
-            pitchersMade = int.Parse(Console.ReadLine());
-            for (int i = 0; i < pitchersMade; i++)
-            {
-                Pitcher pitcher = new Pitcher();
-                pitcher.AdjustInventory(player, inventory, recipe);
-            }
+            pitchers = MakePitchers(player, store, day);
             inventory.ViewInventory();
             SetPrice();
 
@@ -39,6 +34,19 @@ namespace LemonStand
                 SetPrice();
             }
             return price;
+        }
+        public List<Pitcher> MakePitchers(Player player, Store store, Day day)
+        {
+            Console.WriteLine("How many Pitchers will you make?");
+            pitchersMade = int.Parse(Console.ReadLine());
+            List<Pitcher> dailyPitchers = new List<Pitcher>();
+            for (int i = 0; i < pitchersMade; i++)
+            {
+                Pitcher pitcher = new Pitcher();
+                pitcher.AdjustInventory(player, inventory, recipe);
+                dailyPitchers.Add(pitcher);
+            }
+            return dailyPitchers;
         }
 
     }

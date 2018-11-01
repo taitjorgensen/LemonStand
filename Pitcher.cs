@@ -13,7 +13,7 @@ namespace LemonStand
         private int sugarUsed;
         private int iceUsed;
         private int cupsPerPitcher = 10;
-        private int cupsAvailable;
+        private int lemonadeAvailable;
         public void AdjustInventory(Player player, Inventory inventory, Recipe recipe)
         {
 
@@ -25,10 +25,18 @@ namespace LemonStand
             inventory.AdjustIceInventory(iceUsed);
 
         }
-        public int CurrentAvailableCups(Player player)
+        public int InitialAvailableLemonade(Player player)
         {
 
-            return cupsAvailable = cupsPerPitcher * player.pitchersMade;
+            return lemonadeAvailable = cupsPerPitcher * player.pitchersMade;
+        }
+        public int CurrentAvailableLemonade()
+        {
+            if(lemonadeAvailable == 0)
+            {
+                Console.Write("No!");
+            }
+            return (lemonadeAvailable - 1);
         }
     }
 }

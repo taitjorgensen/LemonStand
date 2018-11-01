@@ -65,7 +65,7 @@ namespace LemonStand
             while (day.day < playDays)
             {
                 player.SetUp(player, store, day);
-                day.NewDay();
+                day.NewDay(player);
             }
 
         }

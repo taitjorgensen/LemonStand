@@ -18,7 +18,7 @@ namespace LemonStand
         //likeliness to purchase
         //less likely to purchase when raining or too expensive
         //most likely when sunny and lower price
-        private double DetermineLikelyToPurchase(Player player, Weather weather)
+        public override bool DetermineLikelyToPurchase(Player player, Weather weather)
         {
             if (player.price > 1.00 || weather.weatherForecast == weather.rainyDay)
             {
@@ -32,7 +32,7 @@ namespace LemonStand
             {
                 purchaseFactor = .9;
             }
-            return purchaseFactor;
+            return PurchasesLemonade();
         }
         public bool PurchasesLemonade()
         {
