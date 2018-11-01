@@ -9,7 +9,7 @@ namespace LemonStand
     class Mom : Customer
     {
         //member variables
-        Recipe recipe;
+        
 
         //constructor
 
@@ -18,19 +18,32 @@ namespace LemonStand
         //likeliness to purchase
         //less likely to purchase if too much sugar
         //most likely when recipe balanced
-        private void DetermineLikelyToPurchase()
+        public override bool DetermineLikelyToPurchase(Player player, Weather weather)
         {
-            if ((recipe.cupsOfSugarPerPitcher - 1) > recipe.lemonsPerPitcher)
+            if ((player.recipe.cupsOfSugarPerPitcher - 1) > player.recipe.lemonsPerPitcher)
             {
-                likelyToPurchase = (purchaseFactor * .4);
+                purchaseFactor = .4;
             }
-            else if (recipe.lemonsPerPitcher == (recipe.cupsOfSugarPerPitcher - 1))
+            else if (player.recipe.lemonsPerPitcher == (player.recipe.cupsOfSugarPerPitcher - 1))
             {
-                likelyToPurchase = (purchaseFactor * .7);
+                purchaseFactor = .7;
             }
             else
             {
-                likelyToPurchase = (purchaseFactor * .9);
+                purchaseFactor = .9;
+            }
+            return PurchasesLemonade();
+        }
+        public bool PurchasesLemonade()
+        {
+            Random random = new Random();
+            if (random.Next(1, 101) > (purchaseFactor * 100))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

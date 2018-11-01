@@ -140,12 +140,17 @@ namespace LemonStand
                 customersPerDay.Add(newCustomer);
             }
         }
-        private void SellLemonade(Player player, bool didPurchase)
+        public int SellLemonade(Player player, bool didPurchase)
         {
+            int lemonadeSold = 0;
             if (didPurchase)
             {
                 player.pitchers[player.pitchers.Count - 1].CurrentAvailableLemonade();
+                player.inventory.Cups = player.inventory.Cups - 1;
+                player.currentFunds = player.currentFunds + player.price;
+                return lemonadeSold++;
             }
+            return lemonadeSold;
         }
     }
 }

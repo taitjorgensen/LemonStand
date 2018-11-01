@@ -27,7 +27,6 @@ namespace LemonStand
         }
         public int InitialAvailableLemonade(Player player)
         {
-
             return lemonadeAvailable = cupsPerPitcher * player.pitchersMade;
         }
         public int CurrentAvailableLemonade()

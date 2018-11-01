@@ -18,7 +18,6 @@ namespace LemonStand
         public int icePurchased = 0;
         public int lemonsPurchased = 0;
         public int cupsPurchased = 0;
-        private double currentFunds = 20.00;
         private double income;
         public int CupsOfSugar
         {
@@ -48,9 +47,9 @@ namespace LemonStand
         public double UpdateCurrentFunds(Player player, Store store, Day day)
         {
             store.TotalPurchases(player);
-            currentFunds = (currentFunds - store.purchases + income);
-            Console.WriteLine("You now have $" + currentFunds + ".");
-            return currentFunds;
+            player.currentFunds = (player.currentFunds - store.purchases + income);
+            Console.WriteLine("You now have $" + player.currentFunds + ".");
+            return player.currentFunds;
         }
 
 

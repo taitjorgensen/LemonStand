@@ -25,8 +25,8 @@ namespace LemonStand
         
         public void StartGame()
         {
-            gameRules.Add("As the store owner, you begin with $20.");
-            gameRules.Add("Each day you will see the weather, purchase ingredients, set your recipe, and set the daily price.");
+            gameRules.Add("As the business owner, you begin with $20.");
+            gameRules.Add("Each day you will see the weather, purchase ingredients from the store, set your recipe, and set the daily price.");
             gameRules.Add("Ingredients include, Lemons, Sugar, and Ice.");
             gameRules.Add("Cups are also required to serve, but cannot be changed.");
             gameRules.Add("Weather and price will affect the amount of lemonade sold each day.");

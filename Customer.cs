@@ -12,7 +12,7 @@ namespace LemonStand
         //customer types - child classes??
         protected string factors;
         protected double likelyToPurchase;
-
+        protected double purchaseFactor;
         //constructor
 
 

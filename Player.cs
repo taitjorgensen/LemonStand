@@ -13,12 +13,13 @@ namespace LemonStand
         public double price = 0;
         public int pitchersMade = 0;
         public List<Pitcher> pitchers;
+        public double currentFunds = 20;
 
         public void SetUp(Player player, Store store, Day day)
         {
-            inventory.PurchaseInventory(player, store, day);
-            recipe.SetRecipe(player, store, day);
             day.weather.GetWeatherForecast();
+            inventory.PurchaseInventory(player, store, day);
+            recipe.SetRecipe(player, store, day);            
             pitchers = MakePitchers(player, store, day);
             inventory.ViewInventory();
             SetPrice();
