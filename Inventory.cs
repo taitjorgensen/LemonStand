@@ -60,70 +60,72 @@ namespace LemonStand
             PurchaseCupsOfSugar();
             PurchaseCubesOfIce();
             PurchaseCups();
-            int PurchaseLemons()
-            {
-                Console.WriteLine("Each Lemon costs $0.40.");
-                Console.WriteLine("How many Lemons do you want to purchase?");
-                try
-                {
-                    lemonsPurchased = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    PurchaseLemons();
-                }
-                
-                return lemonsPurchased;
-            }
-            int PurchaseCupsOfSugar()
-            {
-                Console.WriteLine("Each Cup of Sugar costs $0.10.");
-                Console.WriteLine("How many Cups of Sugar do you want to purchase?");
-                try
-                {
-                    sugarPurchased = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    PurchaseCupsOfSugar();
-                }
-                return sugarPurchased;
-            }
-            int PurchaseCubesOfIce()
-            {
-                Console.WriteLine("Each Cube of Ice costs $0.01.");
-                Console.WriteLine("How many Cubes of Ice do you want to purchase?");
-                try
-                {
-                    icePurchased = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    PurchaseCubesOfIce();
-                }
-                      
-                return icePurchased;
-            }
-            int PurchaseCups()
-            {
-                Console.WriteLine("Each Cup costs $0.05.");
-                Console.WriteLine("How many Cups do you want to purchase?");
-                try
-                {
-                    cupsPurchased = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    PurchaseCups();
-                }
-                return cupsPurchased;
-            }
+            Console.Clear();
             lemons = lemons + lemonsPurchased;
             cupsOfSugar = cupsOfSugar + sugarPurchased;
             cubesOfIce = cubesOfIce + icePurchased;
             cups = cups + cupsPurchased;
             UpdateCurrentFunds(player, store, newDay);
             ViewInventory();
+        }
+
+        int PurchaseLemons()
+        {
+            Console.WriteLine("Each Lemon costs $0.40.");
+            Console.WriteLine("How many Lemons do you want to purchase?");
+            try
+            {
+                lemonsPurchased = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                PurchaseLemons();
+            }
+
+            return lemonsPurchased;
+        }
+        int PurchaseCupsOfSugar()
+        {
+            Console.WriteLine("Each Cup of Sugar costs $0.10.");
+            Console.WriteLine("How many Cups of Sugar do you want to purchase?");
+            try
+            {
+                sugarPurchased = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                PurchaseCupsOfSugar();
+            }
+            return sugarPurchased;
+        }
+        int PurchaseCubesOfIce()
+        {
+            Console.WriteLine("Each Cube of Ice costs $0.01.");
+            Console.WriteLine("How many Cubes of Ice do you want to purchase?");
+            try
+            {
+                icePurchased = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                PurchaseCubesOfIce();
+            }
+
+            return icePurchased;
+        }
+        int PurchaseCups()
+        {
+            Console.WriteLine("Each Cup costs $0.05.");
+            Console.WriteLine("How many Cups do you want to purchase?");
+            try
+            {
+                cupsPurchased = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                PurchaseCups();
+            }
+            return cupsPurchased;
         }
 
         public int AdjustLemonInventory(Player player, int lemonsUsed)

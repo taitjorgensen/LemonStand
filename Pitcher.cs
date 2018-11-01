@@ -34,8 +34,7 @@ namespace LemonStand
             if(lemonadeAvailable == 0)
             {
                 Console.Write("Sold Out!");
-                // EndDay();
-
+                //game.RunGame();
             }
             return (lemonadeAvailable - 1);
         }

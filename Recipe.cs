@@ -78,6 +78,7 @@ namespace LemonStand
                 Console.ReadLine();
                 SetSugarPerPitcher();
             }
+
         }
         void SetIcePerPitcher()
         {
