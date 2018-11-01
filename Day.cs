@@ -13,14 +13,14 @@ namespace LemonStand
         private List<Customer> customersPerDay = new List<Customer> { };
         public int dayNumber = 0;
         private int numberOfCustomers;
-        public int lemonadeSold = 0;
+        public int totalLemonadeSold = 0;
         Customer newCustomer;
 
         //Customer customer = new List<Customer>();
 
         public int NewDay(Player player)
         {
-            weather.GetWeatherForecast();
+            
             if (weather.weatherForecast == weather.beautifulDay)
             {
                 numberOfCustomers = 60;
@@ -141,9 +141,9 @@ namespace LemonStand
                 player.pitchers[player.pitchers.Count - 1].CurrentAvailableLemonade();
                 player.inventory.Cups = player.inventory.Cups - 1;
                 player.currentFunds = player.currentFunds + player.price;
-                return lemonadeSold++;
+                return totalLemonadeSold++;
             }
-            return lemonadeSold;
+            return totalLemonadeSold;
         }
     }
 }

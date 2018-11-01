@@ -15,11 +15,11 @@ namespace LemonStand
         public List<Pitcher> pitchers;
         public double currentFunds = 20;
 
-        public void SetUp(Player player, Store store, Day day)
+        public void SetUp(Player player, Store store, Day newDay)
         {
-            day.weather.GetWeatherForecast();
-            inventory.PurchaseInventory(player, store, day);
-            recipe.SetRecipe(player, store, day);            
+            newDay.weather.GetWeatherForecast();
+            inventory.PurchaseInventory(player, store, newDay);
+            recipe.SetRecipe(player, store, newDay);            
             pitchers = MakePitchers(player);
             inventory.ViewInventory();
             SetPrice();
@@ -28,7 +28,15 @@ namespace LemonStand
         public double SetPrice()
         {
             Console.WriteLine("How much will you charge per cup of lemonade?");
-            price = double.Parse(Console.ReadLine());
+            try
+            {
+                price = double.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                SetPrice();
+            }
+            
             if (price > 2.00 || price < .30)
             {
                 Console.WriteLine("This is out of line with current market conditions. Please set a different price.");
@@ -39,7 +47,15 @@ namespace LemonStand
         public List<Pitcher> MakePitchers(Player player)
         {
             Console.WriteLine("How many Pitchers will you make?");
-            pitchersMade = int.Parse(Console.ReadLine());
+            try
+            {
+                pitchersMade = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                MakePitchers(player);
+            }
+            
             List<Pitcher> dailyPitchers = new List<Pitcher>();
             for (int i = 0; i < pitchersMade; i++)
             {

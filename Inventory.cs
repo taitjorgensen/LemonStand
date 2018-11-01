@@ -44,7 +44,7 @@ namespace LemonStand
 
 
         //member methods
-        public double UpdateCurrentFunds(Player player, Store store, Day day)
+        public double UpdateCurrentFunds(Player player, Store store, Day newDay)
         {
             store.TotalPurchases(player);
             player.currentFunds = (player.currentFunds - store.purchases + income);
@@ -54,7 +54,7 @@ namespace LemonStand
 
 
 
-        public void PurchaseInventory(Player player, Store store, Day day)
+        public void PurchaseInventory(Player player, Store store, Day newDay)
         {
             PurchaseLemons();
             PurchaseCupsOfSugar();
@@ -64,35 +64,65 @@ namespace LemonStand
             {
                 Console.WriteLine("Each Lemon costs $0.40.");
                 Console.WriteLine("How many Lemons do you want to purchase?");
-                lemonsPurchased = int.Parse(Console.ReadLine());
+                try
+                {
+                    lemonsPurchased = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    PurchaseLemons();
+                }
+                
                 return lemonsPurchased;
             }
             int PurchaseCupsOfSugar()
             {
                 Console.WriteLine("Each Cup of Sugar costs $0.10.");
                 Console.WriteLine("How many Cups of Sugar do you want to purchase?");
-                sugarPurchased = int.Parse(Console.ReadLine());
+                try
+                {
+                    sugarPurchased = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    PurchaseCupsOfSugar();
+                }
                 return sugarPurchased;
             }
             int PurchaseCubesOfIce()
             {
                 Console.WriteLine("Each Cube of Ice costs $0.01.");
                 Console.WriteLine("How many Cubes of Ice do you want to purchase?");
-                icePurchased = int.Parse(Console.ReadLine());      
+                try
+                {
+                    icePurchased = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    PurchaseCubesOfIce();
+                }
+                      
                 return icePurchased;
             }
             int PurchaseCups()
             {
                 Console.WriteLine("Each Cup costs $0.05.");
                 Console.WriteLine("How many Cups do you want to purchase?");
-                cupsPurchased = int.Parse(Console.ReadLine());
+                try
+                {
+                    cupsPurchased = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    PurchaseCups();
+                }
                 return cupsPurchased;
             }
             lemons = lemons + lemonsPurchased;
             cupsOfSugar = cupsOfSugar + sugarPurchased;
             cubesOfIce = cubesOfIce + icePurchased;
             cups = cups + cupsPurchased;
-            UpdateCurrentFunds(player, store, day);
+            UpdateCurrentFunds(player, store, newDay);
             ViewInventory();
         }
 

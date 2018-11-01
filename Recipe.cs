@@ -20,7 +20,7 @@ namespace LemonStand
 
 
 
-        public void SetRecipe(Player player, Store store, Day day)
+        public void SetRecipe(Player player, Store store, Day newDay)
         {
             SetLemonsPerPitcher();
             SetSugarPerPitcher();
@@ -32,7 +32,15 @@ namespace LemonStand
         {
             Console.WriteLine("Your recipe creates a pitcher that will yeild 10 cups of lemonade.");
             Console.WriteLine("How many lemons will you use per pitcher?");
-            lemonsPerPitcher = int.Parse(Console.ReadLine());
+            try
+            {
+                lemonsPerPitcher = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                SetLemonsPerPitcher();
+            }
+            
             if (lemonsPerPitcher < 5)
             {
                 Console.WriteLine("You want people to drink lemon water? You need more lemons.");
@@ -49,7 +57,15 @@ namespace LemonStand
         void SetSugarPerPitcher()
         {
             Console.WriteLine("How many Cups of Sugar will you use per pitcher?");
-            cupsOfSugarPerPitcher = int.Parse(Console.ReadLine());
+            try
+            {
+                cupsOfSugarPerPitcher = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                SetSugarPerPitcher();
+            }
+            
             if (cupsOfSugarPerPitcher < 2)
             {
                 Console.WriteLine("Are you making sour juice? Your customers will need more sweet than that!");
@@ -65,8 +81,16 @@ namespace LemonStand
         }
         void SetIcePerPitcher()
         {
-            Console.WriteLine("How many Cubes of Ice will you use per pitcher?");
-            cubesOfIcePerPitcher = int.Parse(Console.ReadLine());
+            Console.WriteLine("How many cubes of ice will you use per pitcher?");
+            try
+            {
+                cubesOfIcePerPitcher = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                SetIcePerPitcher();
+            }
+            
         }
 
         public string CheckSweetness()

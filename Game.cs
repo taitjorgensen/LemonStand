@@ -11,7 +11,7 @@ namespace LemonStand
         // member variables
 
         public List<string> gameRules = new List<string> {  };
-        public Day day = new Day();
+        public Day newDay;
         public Store store = new Store();
         public Player player = new Player();
         private int playDays = 7;
@@ -37,45 +37,49 @@ namespace LemonStand
             }
             Console.ReadLine();
             SetNumberOfDaysToPlay();
-            int SetNumberOfDaysToPlay()
-            {
-                Console.WriteLine("How many days would you like to play?");
-                playDays = int.Parse(Console.ReadLine());
-                if (playDays > 30 || playDays < 7)
-                {
-                    Console.WriteLine("Please choose a number from 7 - 30.");
-                    Console.ReadLine();
-                    SetNumberOfDaysToPlay();
-                }
-                else if (playDays <= 30 && playDays >= 7)
-                {
-                    return playDays;
-                }
-                else
-                {
-                    SetNumberOfDaysToPlay();
-                }
-                return 0;
-            }
-            RunGame(player, day, store);
+            RunGame(player, store);
         }
 
-        public void RunGame(Player player, Day day, Store store)
+        public Day RunGame(Player player, Store store)
         {
-            while (day.dayNumber < playDays)
+
+            do
             {
-                player.SetUp(player, store, day);
-                day.NewDay(player);
-                DisplayDayResults();
+                newDay = new Day();
+                player.SetUp(player, store, newDay);
+                newDay.NewDay(player);
+                DisplayDayResults(newDay);
             }
+            while ((newDay.dayNumber - 1) < playDays);
+            return newDay;
 
         }
-        public void DisplayDayResults()
+        public void DisplayDayResults(Day newDay)
         {
-            Console.WriteLine("Sold " + day.lemonadeSold + " cups of lemonade today.");
+            Console.WriteLine("You sold " + newDay.totalLemonadeSold + " cups of lemonade today.");
             Console.WriteLine("You now have $" + player.currentFunds);
             player.inventory.ViewInventory();
             Console.ReadLine();
+        }
+        int SetNumberOfDaysToPlay()
+        {
+            Console.WriteLine("How many days would you like to play?");
+            try
+            {
+                playDays = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                SetNumberOfDaysToPlay();
+            }
+            
+            if (playDays > 30 || playDays < 7)
+            {
+                Console.WriteLine("Please choose a number from 7 - 30.");
+                Console.ReadLine();
+                SetNumberOfDaysToPlay();
+            }
+            return playDays;
         }
     }
 
