@@ -20,7 +20,7 @@ namespace LemonStand
             day.weather.GetWeatherForecast();
             inventory.PurchaseInventory(player, store, day);
             recipe.SetRecipe(player, store, day);            
-            pitchers = MakePitchers(player, store, day);
+            pitchers = MakePitchers(player);
             inventory.ViewInventory();
             SetPrice();
 
@@ -36,7 +36,7 @@ namespace LemonStand
             }
             return price;
         }
-        public List<Pitcher> MakePitchers(Player player, Store store, Day day)
+        public List<Pitcher> MakePitchers(Player player)
         {
             Console.WriteLine("How many Pitchers will you make?");
             pitchersMade = int.Parse(Console.ReadLine());

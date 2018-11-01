@@ -11,8 +11,9 @@ namespace LemonStand
         public Weather weather = new Weather();
         Random random = new Random();
         private List<Customer> customersPerDay = new List<Customer> { };
-        public int day = 0;
+        public int dayNumber = 0;
         private int numberOfCustomers;
+        public int lemonadeSold = 0;
         Customer newCustomer;
 
         //Customer customer = new List<Customer>();
@@ -36,20 +37,14 @@ namespace LemonStand
                 CreateRainyDay(player);
             }
             SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
-            return day++;
+            return dayNumber++;
             
-        }
-
-        private void SellLemonade(Player player, object v)
-        {
-            throw new NotImplementedException();
         }
 
         public void CreateSunnyDay(Player player)
         {
             for (int i = 0; i < numberOfCustomers; i++)
-            {
-                
+            {              
                 int createCustomer = random.Next(1,5);
                 switch (createCustomer)
                 {
@@ -81,7 +76,6 @@ namespace LemonStand
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
-                Customer newCustomer;
                 int createCustomer = random.Next(1, 5);
                 switch (createCustomer)
                 {
@@ -141,8 +135,7 @@ namespace LemonStand
             }
         }
         public int SellLemonade(Player player, bool didPurchase)
-        {
-            int lemonadeSold = 0;
+        {          
             if (didPurchase)
             {
                 player.pitchers[player.pitchers.Count - 1].CurrentAvailableLemonade();

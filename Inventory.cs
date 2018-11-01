@@ -56,10 +56,17 @@ namespace LemonStand
 
         public void PurchaseInventory(Player player, Store store, Day day)
         {
+            PurchaseLemons();
             PurchaseCupsOfSugar();
             PurchaseCubesOfIce();
-            PurchaseLemons();
             PurchaseCups();
+            int PurchaseLemons()
+            {
+                Console.WriteLine("Each Lemon costs $0.40.");
+                Console.WriteLine("How many Lemons do you want to purchase?");
+                lemonsPurchased = int.Parse(Console.ReadLine());
+                return lemonsPurchased;
+            }
             int PurchaseCupsOfSugar()
             {
                 Console.WriteLine("Each Cup of Sugar costs $0.10.");
@@ -73,13 +80,6 @@ namespace LemonStand
                 Console.WriteLine("How many Cubes of Ice do you want to purchase?");
                 icePurchased = int.Parse(Console.ReadLine());      
                 return icePurchased;
-            }
-            int PurchaseLemons()
-            {
-                Console.WriteLine("Each Lemon costs $0.40.");
-                Console.WriteLine("How many Lemons do you want to purchase?");
-                lemonsPurchased = int.Parse(Console.ReadLine());
-                return lemonsPurchased;
             }
             int PurchaseCups()
             {
@@ -96,16 +96,34 @@ namespace LemonStand
             ViewInventory();
         }
 
-        public int AdjustLemonInventory(int lemonsUsed)
+        public int AdjustLemonInventory(Player player, int lemonsUsed)
         {
+            if ((lemons - lemonsUsed) < 0)
+            {
+                Console.WriteLine("You are out of lemons! You'll need to adjust the number of pitchers to make");
+                Console.ReadLine();
+                player.MakePitchers(player);
+            }
             return lemons = lemons - lemonsUsed;
         }
-        public int AdjustSugarInventory(int sugarUsed)
+        public int AdjustSugarInventory(Player player, int sugarUsed)
         {
+            if ((cupsOfSugar - sugarUsed) < 0)
+            {
+                Console.WriteLine("You are out of sugar! You'll need to adjust the number of pitchers to make.");
+                Console.ReadLine();
+                player.MakePitchers(player);
+            }
             return cupsOfSugar = cupsOfSugar - sugarUsed;
         }
-        public int AdjustIceInventory(int iceUsed)
+        public int AdjustIceInventory(Player player, int iceUsed)
         {
+            if ((cubesOfIce - iceUsed) < 0)
+            {
+                Console.WriteLine("You are out of ice! You'll need to adjust the number of pitchers to make.");
+                Console.ReadLine();
+                player.MakePitchers(player);
+            }
             return cubesOfIce = cubesOfIce - iceUsed;
         }
         public int AdjustCupsInventory(int cupsSold)

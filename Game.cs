@@ -57,17 +57,25 @@ namespace LemonStand
                 }
                 return 0;
             }
-            RunGame();
+            RunGame(player, day, store);
         }
 
-        public void RunGame()
+        public void RunGame(Player player, Day day, Store store)
         {
-            while (day.day < playDays)
+            while (day.dayNumber < playDays)
             {
                 player.SetUp(player, store, day);
                 day.NewDay(player);
+                DisplayDayResults();
             }
 
+        }
+        public void DisplayDayResults()
+        {
+            Console.WriteLine("Sold " + day.lemonadeSold + " cups of lemonade today.");
+            Console.WriteLine("You now have $" + player.currentFunds);
+            player.inventory.ViewInventory();
+            Console.ReadLine();
         }
     }
 
