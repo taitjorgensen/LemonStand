@@ -15,6 +15,7 @@ namespace LemonStand
         private int numberOfCustomers;
         public int totalLemonadeSold = 0;
         Customer newCustomer;
+        Game game;
 
         //Customer customer = new List<Customer>();
 
@@ -138,7 +139,7 @@ namespace LemonStand
         {          
             if (didPurchase)
             {
-                player.pitchers[player.pitchers.Count - 1].CurrentAvailableLemonade();
+                player.pitchers[player.pitchers.Count - 1].CurrentAvailableLemonade(game);
                 player.inventory.Cups = player.inventory.Cups - 1;
                 player.currentFunds = player.currentFunds + player.price;
                 return totalLemonadeSold++;

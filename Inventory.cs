@@ -128,36 +128,39 @@ namespace LemonStand
             return cupsPurchased;
         }
 
-        public int AdjustLemonInventory(Player player, int lemonsUsed)
+        public int AdjustInventory(Player player, int lemonsUsed, int sugarUsed, int iceUsed)
         {
-            if ((lemons - lemonsUsed) < 0)
+            if (((lemons - lemonsUsed) < 0) || ((cupsOfSugar - sugarUsed) < 0) || ((cubesOfIce - iceUsed) < 0))
             {
-                Console.WriteLine("You are out of lemons! You'll need to adjust the number of pitchers to make");
+                Console.WriteLine("You do not have enough inventory to make that much! You'll need to adjust the number of pitchers to make");
                 Console.ReadLine();
                 player.MakePitchers(player);
             }
-            return lemons = lemons - lemonsUsed;
+            lemons = lemons - lemonsUsed;
+            cupsOfSugar = cupsOfSugar - sugarUsed;
+            cubesOfIce = cubesOfIce - iceUsed;
+            return lemons + cupsOfSugar + cubesOfIce;
         }
-        public int AdjustSugarInventory(Player player, int sugarUsed)
-        {
-            if ((cupsOfSugar - sugarUsed) < 0)
-            {
-                Console.WriteLine("You are out of sugar! You'll need to adjust the number of pitchers to make.");
-                Console.ReadLine();
-                player.MakePitchers(player);
-            }
-            return cupsOfSugar = cupsOfSugar - sugarUsed;
-        }
-        public int AdjustIceInventory(Player player, int iceUsed)
-        {
-            if ((cubesOfIce - iceUsed) < 0)
-            {
-                Console.WriteLine("You are out of ice! You'll need to adjust the number of pitchers to make.");
-                Console.ReadLine();
-                player.MakePitchers(player);
-            }
-            return cubesOfIce = cubesOfIce - iceUsed;
-        }
+        //public int AdjustSugarInventory(Player player, int sugarUsed)
+        //{
+        //    if ((cupsOfSugar - sugarUsed) < 0)
+        //    {
+        //        Console.WriteLine("You are out of sugar! You'll need to adjust the number of pitchers to make.");
+        //        Console.ReadLine();
+        //        player.MakePitchers(player);
+        //    }
+        //    return cupsOfSugar = cupsOfSugar - sugarUsed;
+        //}
+        //public int AdjustIceInventory(Player player, int iceUsed)
+        //{
+        //    if ((cubesOfIce - iceUsed) < 0)
+        //    {
+        //        Console.WriteLine("You are out of ice! You'll need to adjust the number of pitchers to make.");
+        //        Console.ReadLine();
+        //        player.MakePitchers(player);
+        //    }
+        //    return cubesOfIce = cubesOfIce - iceUsed;
+        //}
         public int AdjustCupsInventory(int cupsSold)
         {
             return cups = cups - cupsSold;

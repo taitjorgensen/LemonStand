@@ -1,0 +1,12 @@
+﻿SOLID design principles for Lemonade Stand Project
+
+In the areas where my player is asked to purchase inventory,
+each method is set up to handle different portions of the purchase process.  
+There is a method to purchase inventory, one to update the total available inventory, and another to update the available funds.  
+This was done to allow for additional ingredients to be added, or variations to how the inventory would be handled.  
+This would demonstrate the Single Responsibility Principle.
+
+The way I designed classes to contain only the needed information for certain processes is an example of Open-Closed Principle.  
+The inventory class does not contain the pitcher, it was left with just available ingredients. 
+The pitcher does not have inventory, only the ingredients that the player decided to use to pour a glass of lemonade.
+For this example, the inventory could be changed to make different drinks, or the pitcher could be made to hold more or less of a beverage.
