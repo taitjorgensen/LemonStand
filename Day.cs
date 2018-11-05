@@ -11,30 +11,29 @@ namespace LemonStand
         public Weather weather = new Weather();
         Random random = new Random();
         private List<Customer> customersPerDay = new List<Customer> { };
-        public int dayNumber = 0;
+        public int dayNumber;
         private int numberOfCustomers;
         public int totalLemonadeSold = 0;
         Customer newCustomer;
-        Game game;
 
-        //Customer customer = new List<Customer>();
+        
 
         public int NewDay(Player player)
         {
             
             if (weather.weatherForecast == weather.beautifulDay)
             {
-                numberOfCustomers = 60;
+                numberOfCustomers = 100;
                 CreateSunnyDay(player);
             }
             else if (weather.weatherForecast == weather.coolDay)
             {
-                numberOfCustomers = 50;
+                numberOfCustomers = 60;
                 CreateCoolDay(player);
             }
             else
             {
-                numberOfCustomers = 35;
+                numberOfCustomers = 40;
                 CreateRainyDay(player);
             }
             SellLemonade(player, newCustomer.DetermineLikelyToPurchase(player, weather));
@@ -139,12 +138,24 @@ namespace LemonStand
         {          
             if (didPurchase)
             {
-                player.pitchers[player.pitchers.Count - 1].CurrentAvailableLemonade(game);
-                player.inventory.Cups = player.inventory.Cups - 1;
-                player.currentFunds = player.currentFunds + player.price;
-                return totalLemonadeSold++;
+                player.pitchers[0].CurrentAvailableLemonade(player);
+
+                if (CheckAvailability(player))
+                {                    
+                    player.inventory.Cups = player.inventory.Cups - 1;
+                    player.currentFunds = player.currentFunds + player.price;
+                    return totalLemonadeSold++;
+                }
             }
             return totalLemonadeSold;
+        }
+        private bool CheckAvailability(Player player)
+        {
+            if ((player.inventory.Cups > 0) && (player.lemonadeAvailable > 0))
+            {   
+                return true;
+            }
+            return false;
         }
     }
 }

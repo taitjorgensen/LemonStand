@@ -12,8 +12,10 @@ namespace LemonStand
         public Inventory inventory = new Inventory();
         public double price = 0;
         public int pitchersMade = 0;
+        public int cupsPerPitcher = 10;
+        public int lemonadeAvailable;
         public List<Pitcher> pitchers;
-        public double currentFunds = 20;
+        public double currentFunds = 25;
 
         public void SetUp(Player player, Store store, Day newDay)
         {
@@ -21,6 +23,7 @@ namespace LemonStand
             inventory.PurchaseInventory(player, store, newDay);
             recipe.SetRecipe(player, store, newDay);            
             pitchers = MakePitchers(player);
+            InitialAvailableLemonade();
             inventory.ViewInventory();
             SetPrice();
 
@@ -64,6 +67,10 @@ namespace LemonStand
                 dailyPitchers.Add(pitcher);
             }
             return dailyPitchers;
+        }
+        public int InitialAvailableLemonade()
+        {
+            return lemonadeAvailable = cupsPerPitcher * pitchersMade;
         }
 
     }

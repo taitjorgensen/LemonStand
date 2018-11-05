@@ -8,13 +8,11 @@ namespace LemonStand
 {
     class Pitcher
     {
-        Player player;
-        Store store;
         public int lemonsUsed;
         private int sugarUsed;
         private int iceUsed;
-        private int cupsPerPitcher = 10;
-        private int lemonadeAvailable;
+        public int cupsPerPitcher = 10;
+        
         public void AdjustInventory(Player player, Inventory inventory, Recipe recipe)
         {
 
@@ -26,18 +24,15 @@ namespace LemonStand
             //inventory.AdjustIceInventory(player, iceUsed);
 
         }
-        public int InitialAvailableLemonade(Player player)
+
+        public int CurrentAvailableLemonade(Player player)
         {
-            return lemonadeAvailable = cupsPerPitcher * player.pitchersMade;
-        }
-        public int CurrentAvailableLemonade(Game game)
-        {
-            if(lemonadeAvailable == 0)
+            if(player.lemonadeAvailable == 0)
             {
-                Console.Write("Sold Out!");
-                game.RunGame(player, store);
+                
+                return player.lemonadeAvailable;
             }
-            return (lemonadeAvailable - 1);
+            return (player.lemonadeAvailable - 1);
         }
     }
 }
